@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { InitialValues, onChangeArgs, Product } from "../interfaces/interfaces";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { InitialValues, onChangeArgs, Product } from '../interfaces/interfaces';
 
 interface useProductProps {
   product: Product;
@@ -14,8 +14,6 @@ export const useProduct = ({
   onChange,
   product,
 }: useProductProps) => {
-  console.log("initialValues", initialValues, value);
-
   const [counter, setCounter] = useState(initialValues?.count || value || 0);
   const isMounted = useRef(false);
 
@@ -24,8 +22,6 @@ export const useProduct = ({
   }, [initialValues]);
 
   useEffect(() => {
-    console.log("useProduct: value changed", value);
-
     if (!isMounted.current) return;
     value && setCounter(value);
   }, [value]);
